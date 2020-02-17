@@ -5,8 +5,14 @@ Copy some Rem from Remnote, and paste in the box below. Watch as a table magical
 <textarea id="text">
 </textarea>
 <br>
-<br>
-<br>
+
+  <input type="radio" id="1" name="Column" >
+  <label for="1">1 Column</label><br>
+  <input type="radio" id="2" name="Column" >
+  <label for="2">2 Columns</label><br>
+ 
+  <br><br>
+ 
 <table id="myTable">
 </table>
 <div id = "output">
@@ -18,7 +24,7 @@ Copy some Rem from Remnote, and paste in the box below. Watch as a table magical
   #text{
   width:100%;
   height:300px;
-    font-size: 8px;
+  font-size: 8px;
 }
 table, th, td {
   border: 1px solid #e2e3e3;
@@ -40,11 +46,17 @@ s[1] = " ";
 }
 var table = document.getElementById("myTable");
   var row = table.insertRow();
+  if (document.getElementById("2").checked == true){
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   cell1.innerHTML = s[0];
   cell2.innerHTML = s[1];
+  }else{
+    var cell1 = row.insertCell(0);
+  cell1.innerHTML = s[0]+" - "+s[1];
 
+    
+  }
 
 } 
 }
@@ -52,4 +64,7 @@ var table = document.getElementById("myTable");
 
 
 document.body.style.backgroundColor = "#8eadde";
+  document.getElementById("2").checked = 'true';
+  document.getElementById("1").oninput = function(){document.getElementById("text").oninput();}
+  document.getElementById("2").oninput = function(){document.getElementById("text").oninput();}
 </script>
